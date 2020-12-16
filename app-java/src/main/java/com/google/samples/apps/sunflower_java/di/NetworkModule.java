@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':app-java'
 
-include ':app'
+package com.google.samples.apps.sunflower_java.di;
+
+
+import com.google.samples.apps.sunflower_java.api.UnsplashService;
+
+import javax.inject.Singleton;
+
+import dagger.Provides;
+import dagger.hilt.InstallIn;
+import dagger.hilt.android.components.ApplicationComponent;
+
+@InstallIn({ApplicationComponent.class})
+public class NetworkModule {
+
+    @Singleton
+    @Provides
+    public final UnsplashService provideUnsplashService() {
+        return UnsplashService.create();
+    }
+}

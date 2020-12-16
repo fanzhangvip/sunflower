@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2019 Shawn Wang
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':app-java'
 
-include ':app'
+package com.google.samples.apps.sunflower_java.data;
+
+import androidx.room.TypeConverter;
+
+import java.util.Calendar;
+
+
+public class Converters {
+
+    @TypeConverter
+    public long calendarToDatestamp(Calendar calendar) {
+        return calendar.getTimeInMillis();
+    }
+
+    @TypeConverter
+    public Calendar datestampToCalendar(long value) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(value);
+        return calendar;
+    }
+}

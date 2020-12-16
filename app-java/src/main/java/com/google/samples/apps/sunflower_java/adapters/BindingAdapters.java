@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-include ':app-java'
 
-include ':app'
+package com.google.samples.apps.sunflower_java.adapters;
+
+import android.view.View;
+
+import androidx.databinding.BindingAdapter;
+
+import org.jetbrains.annotations.NotNull;
+
+import kotlin.jvm.internal.Intrinsics;
+
+public class BindingAdapters {
+    @BindingAdapter("isGone")
+    public static void bindIsGone(View view, boolean isGone) {
+        view.setVisibility(isGone ? View.GONE : View.VISIBLE);
+    }
+
+}
