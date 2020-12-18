@@ -14,18 +14,15 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower_java.di;
+package com.google.samples.apps.sunflower_java;
 
-import com.squareup.inject.assisted.dagger2.AssistedModule;
+import androidx.fragment.app.Fragment;
 
-import dagger.Module;
-import dagger.hilt.InstallIn;
-import dagger.hilt.android.components.FragmentComponent;
-//@AssistedModule
-//@Module(includes = [AssistedInject_AssistedInjectModule.class])
+import com.google.samples.apps.sunflower_java.data.Plant;
 
-@InstallIn({FragmentComponent.class})
-@AssistedModule
-@Module(includes = AssistedInject_AssistedInjectModule.class)
-public interface AssistedInjectModule {
+public class PlantDetailFragment extends Fragment {
+
+    public interface Callback {
+        void add(Plant var1);
+    }
 }

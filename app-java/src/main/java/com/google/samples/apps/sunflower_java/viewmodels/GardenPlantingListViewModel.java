@@ -16,5 +16,30 @@
 
 package com.google.samples.apps.sunflower_java.viewmodels;
 
-public class GardenPlantingListViewModel {
+import androidx.hilt.lifecycle.ViewModelInject;
+import androidx.lifecycle.FlowLiveDataConversions;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
+
+import com.google.samples.apps.sunflower_java.data.GardenPlantingRepository;
+
+import org.jetbrains.annotations.NotNull;
+
+import kotlin.coroutines.CoroutineContext;
+import kotlin.jvm.internal.Intrinsics;
+
+public final class GardenPlantingListViewModel extends ViewModel {
+
+    private  LiveData plantAndGardenPlantings;
+
+    public final LiveData getPlantAndGardenPlantings() {
+        return this.plantAndGardenPlantings;
+    }
+
+    @ViewModelInject
+    public GardenPlantingListViewModel(GardenPlantingRepository gardenPlantingRepository) {
+        super();
+        //需要修改
+//        this.plantAndGardenPlantings = FlowLiveDataConversions.asLiveData$default(gardenPlantingRepository.getPlantedGardens(), (CoroutineContext)null, 0L, 3, (Object)null);
+    }
 }

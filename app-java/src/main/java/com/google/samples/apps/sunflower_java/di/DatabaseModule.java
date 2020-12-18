@@ -25,12 +25,14 @@ import com.google.samples.apps.sunflower_java.data.PlantDao;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
 @InstallIn({ApplicationComponent.class})
+@Module
 public class DatabaseModule {
     @Singleton
     @Provides

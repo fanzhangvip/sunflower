@@ -46,7 +46,7 @@ public class PlantDetailBindingAdapters {
         }
     }
 
-    @BindingAdapter("isGone")
+    @BindingAdapter("isFabGone")
     public static void bindIsGone(FloatingActionButton view, boolean isGone) {
         if (isGone) {
             view.hide();
