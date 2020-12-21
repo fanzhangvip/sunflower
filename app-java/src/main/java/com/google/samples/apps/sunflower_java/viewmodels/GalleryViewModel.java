@@ -17,6 +17,7 @@
 package com.google.samples.apps.sunflower_java.viewmodels;
 
 import androidx.hilt.lifecycle.ViewModelInject;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.paging.CachedPagingDataKt;
 
@@ -29,13 +30,13 @@ import kotlinx.coroutines.flow.Flow;
 
 public class  GalleryViewModel extends ViewModel {
     private String currentQueryValue;
-    private Flow currentSearchResult;
+    private LiveData currentSearchResult;
     private final UnsplashRepository repository;
 
     @NotNull
-    public final Flow searchPictures(String queryString) {
+    public final LiveData searchPictures(String queryString) {
         this.currentQueryValue = queryString;
-        Flow newResult = null;
+        LiveData newResult = null;
         this.currentSearchResult = newResult;
         return newResult;
     }

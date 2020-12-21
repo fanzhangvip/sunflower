@@ -16,26 +16,41 @@
 
 package com.google.samples.apps.sunflower_java.adapters;
 
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.samples.apps.sunflower_java.HomeViewPagerFragmentDirections;
 import com.google.samples.apps.sunflower_java.data.Plant;
-import com.google.samples.apps.sunflower_java.data.PlantAndGardenPlantings;
 import com.google.samples.apps.sunflower_java.databinding.ListItemPlantBinding;
-import com.google.samples.apps.sunflower_java.viewmodels.PlantAndGardenPlantingsViewModel;
 
 import java.util.Objects;
 
-public class PlantAdapter {
+public class PlantAdapter extends ListAdapter<Plant, PlantAdapter.PlantViewHolder> {
 
 
+    protected PlantAdapter(@NonNull PlantDiffCallback diffCallback) {
+        super(diffCallback);
+    }
 
-    static class PlantViewHolder extends RecyclerView.ViewHolder{
+    @NonNull
+    @Override
+    public PlantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new PlantViewHolder(ListItemPlantBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull PlantViewHolder holder, int position) {
+        holder.bind(getItem(position));
+    }
+
+    static class PlantViewHolder extends RecyclerView.ViewHolder {
 
         private ListItemPlantBinding binding;
 
@@ -43,22 +58,22 @@ public class PlantAdapter {
             super(binding.getRoot());
             this.binding = binding;
             binding.setClickListener(view -> {
-                navigateToPlant(binding.getPlant(),view);
+                navigateToPlant(binding.getPlant(), view);
             });
         }
 
 
-        private void navigateToPlant(Plant plant, View view){
+        private void navigateToPlant(Plant plant, View view) {
             Navigation.findNavController(view).navigate(HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(plant.getPlantId()));
         }
 
-        protected void bind(Plant item){
+        protected void bind(Plant item) {
             binding.setPlant(item);
             binding.executePendingBindings();
         }
     }
 
-    static class PlantDiffCallback extends DiffUtil.ItemCallback<Plant>{
+    static class PlantDiffCallback extends DiffUtil.ItemCallback<Plant> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Plant oldItem, @NonNull Plant newItem) {
@@ -67,7 +82,7 @@ public class PlantAdapter {
 
         @Override
         public boolean areContentsTheSame(@NonNull Plant oldItem, @NonNull Plant newItem) {
-            return Objects.equals(oldItem,newItem);
+            return Objects.equals(oldItem, newItem);
         }
     }
 }

@@ -20,10 +20,6 @@ import android.view.View;
 
 import androidx.databinding.BindingAdapter;
 
-import org.jetbrains.annotations.NotNull;
-
-import kotlin.jvm.internal.Intrinsics;
-
 public class BindingAdapters {
     @BindingAdapter("isGone")
     public static void bindIsGone(View view, boolean isGone) {
