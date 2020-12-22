@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class GardenPlantingAdapter extends ListAdapter<PlantAndGardenPlantings, GardenPlantingAdapter.ViewHolder> {
 
-    protected GardenPlantingAdapter(@NonNull GardenPlantDiffCallback diffCallback) {
+    public GardenPlantingAdapter(@NonNull GardenPlantDiffCallback diffCallback) {
         super(diffCallback);
     }
 
@@ -58,7 +58,9 @@ public class GardenPlantingAdapter extends ListAdapter<PlantAndGardenPlantings, 
         }
     }
 
-    static class GardenPlantDiffCallback extends DiffUtil.ItemCallback<PlantAndGardenPlantings> {
+    public static class GardenPlantDiffCallback extends DiffUtil.ItemCallback<PlantAndGardenPlantings> {
+
+
 
         @Override
         public boolean areItemsTheSame(@NonNull PlantAndGardenPlantings oldItem, @NonNull PlantAndGardenPlantings newItem) {

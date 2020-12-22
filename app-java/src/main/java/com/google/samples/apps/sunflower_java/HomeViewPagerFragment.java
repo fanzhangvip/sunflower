@@ -18,5 +18,22 @@ package com.google.samples.apps.sunflower_java;
 
 import androidx.fragment.app.Fragment;
 
+import static com.google.samples.apps.sunflower_java.adapters.SunflowerPagerAdapter.MY_GARDEN_PAGE_INDEX;
+import static com.google.samples.apps.sunflower_java.adapters.SunflowerPagerAdapter.PLANT_LIST_PAGE_INDEX;
+
 public class HomeViewPagerFragment extends Fragment {
+
+
+
+    private String getTabTitle(int position){
+        String result =  getString(R.string.my_garden_title);
+        switch (position){
+            case MY_GARDEN_PAGE_INDEX:
+                result = getString(R.string.my_garden_title);
+                break;
+            case PLANT_LIST_PAGE_INDEX:
+                result = getString(R.string.my_garden_title);
+        }
+        return result;
+    }
 }

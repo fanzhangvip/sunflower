@@ -6,20 +6,21 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.samples.apps.sunflower_java.data.GardenPlanting;
 import com.google.samples.apps.sunflower_java.data.GardenPlantingRepository;
+import com.google.samples.apps.sunflower_java.data.PlantAndGardenPlantings;
 
 import java.util.List;
 
 public final class GardenPlantingListViewModel extends ViewModel {
 
-    private  LiveData<List<GardenPlanting>> plantAndGardenPlantings;
+    private  LiveData<List<PlantAndGardenPlantings>> plantAndGardenPlantings;
 
-    public final LiveData<List<GardenPlanting>> getPlantAndGardenPlantings() {
+    public final LiveData<List<PlantAndGardenPlantings>> getPlantAndGardenPlantings() {
         return plantAndGardenPlantings;
     }
 
     @ViewModelInject
     public GardenPlantingListViewModel(GardenPlantingRepository gardenPlantingRepository) {
         super();
-        plantAndGardenPlantings = gardenPlantingRepository.getGardenPlantings();
+        plantAndGardenPlantings = gardenPlantingRepository.getPlantAndGardenPlantings();
     }
 }
