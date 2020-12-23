@@ -47,7 +47,7 @@ public class GalleryFragment extends Fragment {
 
     private void search(String query) {
         viewModel.searchPictures(query).observe(getViewLifecycleOwner(), unsplashPhotos -> {
-//            adapter.submitData();
+//            adapter.submitData(unsplashPhotos);
         });
     }
 }
