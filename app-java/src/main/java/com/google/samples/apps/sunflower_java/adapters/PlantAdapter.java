@@ -35,7 +35,7 @@ import java.util.Objects;
 public class PlantAdapter extends ListAdapter<Plant, PlantAdapter.PlantViewHolder> {
 
 
-    protected PlantAdapter(@NonNull PlantDiffCallback diffCallback) {
+    public PlantAdapter(@NonNull PlantDiffCallback diffCallback) {
         super(diffCallback);
     }
 
@@ -73,7 +73,7 @@ public class PlantAdapter extends ListAdapter<Plant, PlantAdapter.PlantViewHolde
         }
     }
 
-    static class PlantDiffCallback extends DiffUtil.ItemCallback<Plant> {
+    public static class PlantDiffCallback extends DiffUtil.ItemCallback<Plant> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Plant oldItem, @NonNull Plant newItem) {

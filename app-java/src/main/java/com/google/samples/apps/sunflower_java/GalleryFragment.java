@@ -1,22 +1,53 @@
-/*
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.google.samples.apps.sunflower_java;
 
-import androidx.fragment.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+
+import com.google.samples.apps.sunflower_java.adapters.GalleryAdapter;
+import com.google.samples.apps.sunflower_java.databinding.FragmentGalleryBinding;
+import com.google.samples.apps.sunflower_java.viewmodels.GalleryViewModel;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class GalleryFragment extends Fragment {
+
+    private GalleryAdapter adapter = new GalleryAdapter(new GalleryAdapter.GalleryDiffCallback());
+    private GalleryViewModel viewModel;
+
+    private GalleryFragmentArgs args;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        args = GalleryFragmentArgs.fromBundle(getArguments());
+        viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
+        FragmentGalleryBinding binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        if(getContext() !=null){
+            return binding.getRoot();
+        }
+        binding.photoList.setAdapter(adapter);
+        search(args.getPlantName());
+        binding.toolbar.setNavigationOnClickListener(view -> {
+            Navigation.findNavController(view).navigateUp();
+        });
+
+        return binding.getRoot();
+    }
+
+    private void search(String query) {
+        viewModel.searchPictures(query).observe(getViewLifecycleOwner(), unsplashPhotos -> {
+//            adapter.submitData();
+        });
+    }
 }

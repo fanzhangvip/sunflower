@@ -4,7 +4,6 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.samples.apps.sunflower_java.data.GardenPlanting;
 import com.google.samples.apps.sunflower_java.data.GardenPlantingRepository;
 import com.google.samples.apps.sunflower_java.data.PlantAndGardenPlantings;
 

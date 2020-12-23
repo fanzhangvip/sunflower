@@ -31,7 +31,7 @@ public class GalleryAdapter extends PagingDataAdapter<UnsplashPhoto, GalleryAdap
         holder.bind(getItem(position));
     }
 
-    final static class GalleryDiffCallback extends DiffUtil.ItemCallback<UnsplashPhoto> {
+    public static class GalleryDiffCallback extends DiffUtil.ItemCallback<UnsplashPhoto> {
 
         @Override
         public boolean areItemsTheSame(UnsplashPhoto oldItem, UnsplashPhoto newItem) {

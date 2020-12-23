@@ -7,6 +7,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.google.samples.apps.sunflower_java.GardenFragment;
+import com.google.samples.apps.sunflower_java.PlantListFragment;
+
 public class SunflowerPagerAdapter extends FragmentStateAdapter {
 
     public static final int  MY_GARDEN_PAGE_INDEX = 0;
@@ -14,7 +17,7 @@ public class SunflowerPagerAdapter extends FragmentStateAdapter {
 
 
     private Fragment[] tabFragmentsCreators = new Fragment[]{
-            new Fragment(),
+            new GardenFragment(),new PlantListFragment()
     };
 
 
