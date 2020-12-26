@@ -10,10 +10,10 @@ import java.util.Locale;
 
 
 public final class PlantAndGardenPlantingsViewModel {
-    private  Plant plant;
-    private  GardenPlanting gardenPlanting;
-    private  String waterDateString;
-    private  String plantDateString;
+    private Plant plant;
+    private GardenPlanting gardenPlanting;
+    private String waterDateString;
+    private String plantDateString;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.US);
 
     public final String getWaterDateString() {
@@ -43,9 +43,11 @@ public final class PlantAndGardenPlantingsViewModel {
     public PlantAndGardenPlantingsViewModel(PlantAndGardenPlantings plantings) {
         super();
         plant = plantings.getPlant();
-        gardenPlanting = plantings.getGardenPlantings().get(0);
-        waterDateString = dateFormat.format(gardenPlanting.getLastWateringDate().getTime());
-        plantDateString = dateFormat.format(gardenPlanting.getPlantDate().getTime());
+        if (plantings.getGardenPlantings().size() > 0) {
+            gardenPlanting = plantings.getGardenPlantings().get(0);
+            waterDateString = dateFormat.format(gardenPlanting.getLastWateringDate().getTime());
+            plantDateString = dateFormat.format(gardenPlanting.getPlantDate().getTime());
+        }
     }
 
 

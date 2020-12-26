@@ -13,7 +13,6 @@ import javax.inject.Singleton;
 
 @Singleton
 public class GardenPlantingRepository {
-    private static GardenPlantingRepository instance;
     private GardenPlantingDao gardenPlantingDao;
 
     @Inject
