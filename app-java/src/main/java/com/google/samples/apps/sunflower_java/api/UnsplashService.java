@@ -13,12 +13,14 @@ import retrofit2.http.Query;
 
 public interface UnsplashService {
 
+    String BASE_URL = "https://api.unsplash.com/";
+
     static UnsplashService create(){
         HttpLoggingInterceptor logger = new HttpLoggingInterceptor();
         logger.setLevel(HttpLoggingInterceptor.Level.BASIC);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logger).build();
         return new Retrofit.Builder()
-                .baseUrl(BuildConfig.UNSPLASH_ACCESS_KEY)
+                .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
